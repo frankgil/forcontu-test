@@ -1,0 +1,7 @@
+name = "Forcontu Test Project"
+description = "Test project for educational purposes"
+core = 7.x
+files[] = forcontu_test_project.module
+dependencies[] = views
+dependencies[] = rules
+package = My Modules
