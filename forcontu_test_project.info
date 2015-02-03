@@ -4,4 +4,5 @@ core = 7.x
 files[] = forcontu_test_project.module
 dependencies[] = views
 dependencies[] = ctools
+dependencies[] = entity
 package = My Modules
