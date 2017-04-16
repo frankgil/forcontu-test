@@ -1,64 +1,32 @@
 <?php
 
 /**
- * Implements hook_install().
- */
-function nodes_forcontu_install() {
-  node_types_rebuild();
-  $types = node_type_get_types();
-  node_add_body_field($types['myproduct'], 'Description');
-}
+* @file
+* Contains install and update functions for Forcontu Test Project.
+*/
 
-
+use Drupal\taxonomy\Entity\Term;
 
 /**
- * Implements hook_schema().
+ * Implements hook_install().
  */
-function nodes_forcontu_schema() {
-
-  $schema['nodes_forcontu'] = array(
-    'description' => 'Almacena los datos del tipo de contenido mi producto.',
-    'fields' => array(
-      'nid'  => array(
-        'type' => 'int',
-        'not null' => TRUE,
-        'description' => 'Primary Key: nid.',
-      ),
-      'price' => array(
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-        'description' => "Precio",
-      ),
-      'weight' => array(
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-        'description' => "Peso",
-      ),
-      'length' => array(
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-        'description' => "Longitud",
-      ),
-      'width' => array(
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-        'description' => "Ancho",
-      ),
-      'height' => array(
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-        'description' => "Alto",
-      ),
-
-    ),
-    'primary key' => array('nid'),
-  );
-
-  return $schema;
+function forcontu_test_project_install(){
+ 
+  \Drupal::state()->set('forcontu_test_project.test', TRUE);
+ 
+  $term = Term:: create([
+    'name' => t('Forcontu Test' ),
+    'vid' => 'tags' ,
+  ]);
+  $term->save();
+  
 }
 
+/**
+ * Implements hook_uninstall().
+ */
+function forcontu_hello_uninstall(){
+	
+  \Drupal::state()->delete('forcontu_test_project.test');
+  
+}

@@ -1,0 +1,5 @@
+name: Forcontu Test Project
+type: module
+description: 'Working with git'
+package: Forcontu
+core: 8.x
